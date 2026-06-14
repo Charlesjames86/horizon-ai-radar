@@ -1,9 +1,9 @@
 {
   "version": "1.0",
   "ai": {
-    "provider": "openai",
-    "model": "gpt-4",
-    "api_key_env": "OPENAI_API_KEY",
+    "provider": "deepseek",
+    "model": "deepseek-chat",
+    "api_key_env": "DEEPSEEK_API_KEY",
     "temperature": 0.3,
     "max_tokens": 4096,
     "throttle_sec": 0,
@@ -24,21 +24,22 @@
   "sources": {
     "github": [
       {
-        "type": "user_events",
-        "username": "torvalds",
+        "type": "repo_releases",
+        "owner": "anthropics",
+        "repo": "claude-code",
         "enabled": true
       },
       {
         "type": "repo_releases",
-        "owner": "astral-sh",
-        "repo": "uv",
+        "owner": "openai",
+        "repo": "cursor",
         "enabled": true
       }
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 20,
-      "min_score": 100
+      "fetch_top_stories": 30,
+      "min_score": 80
     },
     "rss": [
       {
@@ -48,10 +49,16 @@
         "category": "ai-tools"
       },
       {
-        "name": "LWN.net (subscriber full-text)",
-        "url": "https://lwn.net/headlines/full_text?key=${LWN_KEY}",
-        "enabled": false,
-        "category": "linux"
+        "name": "The Gradient",
+        "url": "https://thegradient.pub/rss/",
+        "enabled": true,
+        "category": "ai-research"
+      },
+      {
+        "name": "AI News",
+        "url": "https://venturebeat.com/category/ai/feed/",
+        "enabled": true,
+        "category": "ai-news"
       }
     ],
     "reddit": {
@@ -62,23 +69,32 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 15,
-          "min_score": 50
-        }
-      ],
-      "users": [
+          "fetch_limit": 20,
+          "min_score": 30
+        },
         {
-          "username": "iamthatis",
+          "subreddit": "artificial",
           "enabled": true,
-          "sort": "new",
-          "fetch_limit": 10
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 30
+        },
+        {
+          "subreddit": "ClaudeAI",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 20
         }
       ],
-      "fetch_comments": 5
+      "users": [],
+      "fetch_comments": 3
     },
     "twitter": {
       "enabled": false,
-      "users": ["karpathy", "ylecun"],
+      "users": ["karpathy", "ylecun", "sama"],
       "fetch_limit": 10,
       "fetch_reply_text": false,
       "max_replies_per_tweet": 3,
@@ -89,16 +105,7 @@
       "enabled": false,
       "fetch_filings": false,
       "filings_provider": "sec",
-      "watchlists": [
-        {
-          "name": "megacaps",
-          "enabled": true,
-          "provider": "yfinance",
-          "fetch_limit": 20,
-          "category": "equities",
-          "symbols": ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "TSLA"]
-        }
-      ]
+      "watchlists": []
     },
     "ossinsight": {
       "enabled": false,
